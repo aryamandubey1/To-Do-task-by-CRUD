@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+    <title>Login</title>
+</head>
+
+<body>
+   
+    <div class="form-inner">
+      <h2>Login</h2>
+    {% if messages %}
+      {% for message in messages %}
+      <h2 style="color: firebrick;">{{message}}</h2>
+      {% endfor %}
+    {% endif %}
+      <form action="#" class="login" method="POST">
+        {% csrf_token %}
+        <div class="field">
+          <input type="text" placeholder="Name" required  name='uname'/>
+        </div>
+        <div class="field">
+          <input type="password" placeholder="Password" required name='upassword'/>
+        </div>
+        <div class="field btn">
+          <div class="btn-layer"></div>
+          <input type="submit" value="Login" />
+        </div>
+        <div class="pass-link">
+          <a href="#">Reset password?</a>
+        </div>
+        <br>
+        <div class="login">
+          Don't Have Account? <a href="{% url 'register'%}">Create A New</a>
+      </div>
+      </form>
+</div>
+  </body>
+
+</body>
+</html>
